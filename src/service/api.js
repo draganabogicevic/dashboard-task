@@ -17,8 +17,8 @@ class ApiService {
     return this.http.put(path, payload, config)
   }
 
-  async delete(path, payload, config) {
-    return this.http.delete(path, payload, config)
+  async delete(path, id) {
+    return this.http.delete(path, id)
   }
 }
 
