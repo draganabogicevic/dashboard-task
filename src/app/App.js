@@ -5,16 +5,19 @@ import Dashboard from './Dashboard'
 import NewUser from './NewUser'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import UserContextProvider from '../context/UserContextProvider'
 import './App.css'
 
 function App() {
   return (
     <ChakraProvider>
       <Header />
-      <Routes>
-        <Route path='/' element={<Dashboard />} />
-        <Route path='/newuser' element={<NewUser />} />
-      </Routes>
+      <UserContextProvider>
+        <Routes>
+          <Route path='/' element={<Dashboard />} />
+          <Route path='/newuser' element={<NewUser />} />
+        </Routes>
+      </UserContextProvider>
       <Footer />
     </ChakraProvider>
   );
