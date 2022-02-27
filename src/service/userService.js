@@ -3,8 +3,14 @@ import User from '../models/User'
 
 export class UserService {
   async fetchUsers () {
-    const users = await API.get('/data')
+    const users = await API.get('/users')
     return users.map(c => new User(c))
+  }
+
+  async submitUser (data) {
+    const res = await API.post('/users', data)
+
+    return res.status === 200
   }
 }
 

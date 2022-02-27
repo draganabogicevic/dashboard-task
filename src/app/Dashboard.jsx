@@ -1,22 +1,23 @@
 import React from 'react'
-import { useDataFetch } from '../hooks/useDataFetch'
-import { usersService } from '../service/userService'
-
-import { Table, Thead, Box, Tbody, Tr, Th, Td, Button, useColorModeValue, Heading } from "@chakra-ui/react"
 import { Link } from 'react-router-dom'
+import Loader from './components/Loader'
+import { useUserContext } from '../context/userContext'
+
+import { Table, Thead, Box, Tbody, Tr, Th, Td, Button, useColorModeValue, Heading } from '@chakra-ui/react'
 
 const Dashboard = () => {
-  const {
-    data,
-    loading,
-    error,
-  } = useDataFetch(usersService.fetchUsers())
   
+  const { users } = useUserContext()
+  console.log(users)
   const stripColor = useColorModeValue('teal','#A0AEC0')
   const editBtnColor = useColorModeValue('#FEFCBF', '#A0AEC0')
   const deleteBtnColor = useColorModeValue('#F56565', '#63171B')
   const newUserBtnColor = useColorModeValue('#B2F5EA','#A0AEC0')
-  console.log(data)
+
+  // if(loading) {
+  //   return <Loader />
+  // }
+
 
   return (
     <Box m={12}>
@@ -38,7 +39,7 @@ const Dashboard = () => {
       </Thead>
       <Tbody>
         
-        {data.map((u) => (
+        {users.map((u) => (
         <Tr key={u.id}> 
           <Td>{u.id}</Td>
           <Td>{u.name}</Td>
@@ -46,7 +47,9 @@ const Dashboard = () => {
           <Td>{u.city}</Td>
           <Td>{u.email}</Td>
           <Td>
-            <Button bg={editBtnColor}>EDIT</Button>
+            <Link to='/newuser'>
+              <Button bg={editBtnColor}>EDIT</Button>
+            </Link>  
           </Td>
           <Td>
             <Button bg={deleteBtnColor}>DELETE</Button>
