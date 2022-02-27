@@ -12,6 +12,12 @@ export class UserService {
 
     return res.status === 200
   }
+
+  async deleteUser (id) {
+    const res = await API.delete('/users/' + id)
+
+    return res.status === 200
+  }
 }
 
 export const usersService = new UserService()

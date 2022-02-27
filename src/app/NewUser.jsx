@@ -104,7 +104,6 @@ const NewUser = () => {
               onChange={e => onNameChange(e.target.value)}
               type='text' 
               placeholder='Name'  
-              isRequired
             />
           </Box>
           <Text>{nameError}</Text>
@@ -118,7 +117,6 @@ const NewUser = () => {
               onChange={e => onEmailChange(e.target.value)}
               type='text'
               placeholder='Email'  
-              isRequired
             />
           </Box>
           <Text>{emailError}</Text>

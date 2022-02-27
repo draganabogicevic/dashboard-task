@@ -16,16 +16,22 @@ const UserContextProvider = props => {
       setUsers(data)
     }, [data])
    
-    console.log(users)
+   
     const userHandler = (newUser) => {
         setUsers(prevUsers => {
             return [...prevUsers, newUser]
         })
     }
 
+    const deleteHandler = (id) => {
+      setUsers(users.filter(u => u.id !== id))
+  }
     const usersContextValue = {
         users,
+        loading,
+        error,
         userHandler,
+        deleteHandler,
     }
 
     return (
